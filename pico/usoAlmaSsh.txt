@@ -1,0 +1,310 @@
+Microsoft Windows [Versión 10.0.22631.4460]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Delight>ssh
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-Q query_option]
+           [-R address] [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+
+C:\Users\Delight>ssh pi@raspberry
+ssh: Could not resolve hostname raspberry: Host desconocido.
+
+C:\Users\Delight>ssh pi@minialma
+The authenticity of host 'minialma (192.168.0.75)' can't be established.
+ED25519 key fingerprint is SHA256:OxxPyR4RcVOCZQEjA0mXUO2ef2gO8jN6kmkSu9P5sRs.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'minialma' (ED25519) to the list of known hosts.
+pi@minialma's password:
+Linux minialma 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Dec 19 19:56:56 2024
+
+SSH is enabled and the default password for the 'pi' user has not been changed.
+This is a security risk - please login as the 'pi' user and type 'passwd' to set a new password.
+
+pi@minialma:~ $ cd pico
+pi@minialma:~/pico $ python alma.py
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 322, in open
+    self.fd = os.open(self.portstr, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 40, in <module>
+    ser=serial.Serial(port='/dev/ttyUSB0', baudrate=115200)
+  File "/usr/lib/python3/dist-packages/serial/serialutil.py", line 244, in __init__
+    self.open()
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 325, in open
+    raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
+serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+pi@minialma:~/pico $ ls
+alma_1_es_raspberry-pi_v3_0_0.rhn  alma_1_es.rhn  alma.py  alma_ws2811.py  holaalma.ppn  picotest.py  porcupine_params_es.pv  __pycache__  rhino_params_es.pv  ws2811.py
+pi@minialma:~/pico $ sudo alma.py
+sudo: alma.py: command not found
+pi@minialma:~/pico $ alma.py
+-bash: alma.py: command not found
+pi@minialma:~/pico $ open
+xdg-open - opens a file or URL in the user's preferred application
+
+Synopsis
+
+xdg-open { file | URL }
+
+xdg-open { --help | --manual | --version }
+
+Use 'man xdg-open' or 'xdg-open --manual' for additional info.
+pi@minialma:~/pico $ open alma.py
+
+[1]+  Stopped                 open alma.py
+pi@minialma:~/pico $ ls /dev/tty*
+/dev/tty    /dev/tty12  /dev/tty17  /dev/tty21  /dev/tty26  /dev/tty30  /dev/tty35  /dev/tty4   /dev/tty44  /dev/tty49  /dev/tty53  /dev/tty58  /dev/tty62  /dev/ttyAMA0
+/dev/tty0   /dev/tty13  /dev/tty18  /dev/tty22  /dev/tty27  /dev/tty31  /dev/tty36  /dev/tty40  /dev/tty45  /dev/tty5   /dev/tty54  /dev/tty59  /dev/tty63  /dev/ttyprintk
+/dev/tty1   /dev/tty14  /dev/tty19  /dev/tty23  /dev/tty28  /dev/tty32  /dev/tty37  /dev/tty41  /dev/tty46  /dev/tty50  /dev/tty55  /dev/tty6   /dev/tty7
+/dev/tty10  /dev/tty15  /dev/tty2   /dev/tty24  /dev/tty29  /dev/tty33  /dev/tty38  /dev/tty42  /dev/tty47  /dev/tty51  /dev/tty56  /dev/tty60  /dev/tty8
+/dev/tty11  /dev/tty16  /dev/tty20  /dev/tty25  /dev/tty3   /dev/tty34  /dev/tty39  /dev/tty43  /dev/tty48  /dev/tty52  /dev/tty57  /dev/tty61  /dev/tty9
+pi@minialma:~/pico $ apen alma.py
+-bash: apen: command not found
+pi@minialma:~/pico $ open alma.py
+
+[2]+  Stopped                 open alma.py
+pi@minialma:~/pico $ arecord -l
+pi@minialma:~/pico $ sudo alma.py
+sudo: alma.py: command not founde 0: USB Audio [USB Audio]
+pi@minialma:~/pico $ alma.py
+-bash: alma.py: command not found
+pi@minialma:~/pico $
+pi@minialma:~/pico $ sudo alma.py
+sudo: alma.py: command not found
+pi@minialma:~/pico $ ls
+alma_1_es_raspberry-pi_v3_0_0.rhn  alma_ws2811.py  porcupine_params_es.pv  ws2811.py
+alma_1_es.rhn                      holaalma.ppn    __pycache__
+alma.py                            picotest.py     rhino_params_es.pv
+pi@minialma:~/pico $ python alma.py
+^[[A^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ python alma.py
+^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+
+
+Use "fg" to return to nano.
+
+[3]+  Stopped                 nano alma.py
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ sudo python alma.py
+^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ dmesg | grep tty
+[    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=0 snd_bcm2835.enable_headphones=0 snd_bcm2835.enable_hdmi=1 snd_bcm2835.enable_hdmi=0 video=HDMI-A-1:640x480M@60D,margin_left=24,margin_right=24,margin_top=16,margin_bottom=16 smsc95xx.macaddr=B8:27:EB:9B:B1:37 vc_mem.mem_base=0x1ec00000 vc_mem.mem_size=0x20000000  console=ttyS0,115200 console=tty1 root=PARTUUID=c515ab77-02 rootfstype=ext4 fsck.repair=yes rootwait cfg80211.ieee80211_regdom=AR
+[    0.001399] printk: console [tty1] enabled
+[    3.201254] 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 99, base_baud = 0) is a PL011 rev2
+[    6.120376] systemd[1]: Created slice system-getty.slice.
+pi@minialma:~/pico $ arecord -l
+**** List of CAPTURE Hardware Devices ****
+card 1: Audio [USB Audio], device 0: USB Audio [USB Audio]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+pi@minialma:~/pico $ python alma.py
+^Z
+[4]+  Stopped                 python alma.py
+pi@minialma:~/pico $ nano alma.py
+
+
+Use "fg" to return to nano.
+
+[5]+  Stopped                 nano alma.py
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+Iniciando el programa...
+Iniciando el programa...
+^[[A
+^[[A^[[C^[[D^[[A^[[C
+^X
+^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 48, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+^[[A^[[A^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ sudo lsof /dev/ttyAMA0
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+hciattach 554 root    3u   CHR 204,64      0t0  130 /dev/ttyAMA0
+python    887   pi    3u   CHR 204,64      0t0  130 /dev/ttyAMA0
+pi@minialma:~/pico $ sudo systemctl stop bluetooth
+pi@minialma:~/pico $ sudo lsof /dev/ttyAMA0
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+hciattach 554 root    3u   CHR 204,64      0t0  130 /dev/ttyAMA0
+python    887   pi    3u   CHR 204,64      0t0  130 /dev/ttyAMA0
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 322, in open
+    self.fd = os.open(self.portstr, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 40, in <module>
+    ser=serial.Serial(port='/dev/ttyUSB0', baudrate=115200)
+  File "/usr/lib/python3/dist-packages/serial/serialutil.py", line 244, in __init__
+    self.open()
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 325, in open
+    raise SerialException(msg.errno, "could not open port {}: {}".format(self._port, msg))
+serial.serialutil.SerialException: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+^CTraceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r'.encode())
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 622, in write
+    abort, ready, _ = select.select([self.pipe_abort_write_r], [self.fd], [], None)
+KeyboardInterrupt
+
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+Traceback (most recent call last):
+  File "/home/pi/pico/alma.py", line 47, in <module>
+    ser.write ('{"ps":2}\r')
+  File "/usr/lib/python3/dist-packages/serial/serialposix.py", line 598, in write
+    d = to_bytes(data)
+  File "/usr/lib/python3/dist-packages/serial/serialutil.py", line 65, in to_bytes
+    raise TypeError('unicode strings are not supported, please encode to bytes: {!r}'.format(seq))
+TypeError: unicode strings are not supported, please encode to bytes: '{"ps":2}\r'
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+Iniciando el programa...
+Device 0: Monitor of USB Audio Analog Stereo
+Device 1: USB Audio Mono
+Porcupine version: 3.0.0
+Rhino version: 3.0.0
+Context info: context:
+  expressions:
+    estadoAnimo:
+    - '[me siento, estoy] (con) ($calificadores:calif) $estados:estado'
+  slots:
+    estados:
+    - feliz
+    - cansado
+    - miedoso
+    - agradecido
+    - avergonzado
+    - orgulloso
+    - confundido
+    - esperanzado
+    - disgustado
+    - sorprendido
+    - miedo
+    - tranquilo
+    - ansioso
+    - enojado
+    - triste
+    calificadores:
+    - mas o menos
+    - medio
+    - bastante
+    - algo
+    - poco
+    - mucho
+    - muy
+  macros: {}
+
+PORCUPINE FRAME_LEN:512
+RHINO FRAME_LEN:512
+Listening ... (press Ctrl+C to exit)
+^CStopping ...
+pi@minialma:~/pico $ nano alma.py
+pi@minialma:~/pico $ python alma.py
+Iniciando el programa...
+Device 0: Monitor of USB Audio Analog Stereo
+Device 1: USB Audio Mono
+Porcupine version: 3.0.0
+Rhino version: 3.0.0
+Context info: context:
+  expressions:
+    estadoAnimo:
+    - '[me siento, estoy] (con) ($calificadores:calif) $estados:estado'
+  slots:
+    estados:
+    - feliz
+    - cansado
+    - miedoso
+    - agradecido
+    - avergonzado
+    - orgulloso
+    - confundido
+    - esperanzado
+    - disgustado
+    - sorprendido
+    - miedo
+    - tranquilo
+    - ansioso
+    - enojado
+    - triste
+    calificadores:
+    - mas o menos
+    - medio
+    - bastante
+    - algo
+    - poco
+    - mucho
+    - muy
+  macros: {}
+
+PORCUPINE FRAME_LEN:512
+RHINO FRAME_LEN:512
+Listening ... (press Ctrl+C to exit)
+[2024-12-20 15:23:54.943764] Detected holaalma
+^CStopping ...
+pi@minialma:~/pico $ client_loop: send di
