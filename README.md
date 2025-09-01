@@ -1,2 +1,2 @@
 # DelightSoftware
-Documentación de version y codigo
+Documentación de programas prototipo
